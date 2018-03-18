@@ -1,0 +1,49 @@
+.home {
+  .site-inner,
+  .wrap {
+    max-width: none;
+    padding-top: 0;
+  }
+}
+
+.hero--home {
+
+  &:before {
+    background-image: linear-gradient(to bottom right, #2a2a2a, $primary-color);
+    background-image: -moz-linear-gradient(to bottom right, #2a2a2a, $primary-color);
+    background-image: -webkit-linear-gradient(to bottom right, #2a2a2a, $primary-color);
+    opacity: 0.5;
+  }
+
+  .hero__content {
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 85%;
+  }
+
+  .hero__lead,
+  .hero__copy {
+    text-align: left;
+    display: flex;
+    color: white;
+  }
+
+  .hero__lead {
+    width: 60%;
+    display: inline-block;
+
+    h1 {color: white;}
+  }
+
+  .hero__copy {
+    width: 40%;
+    display: inline-block;
+    @include notmobile { padding-left: 40px; }
+  }
+
+  .bg--white {
+    background-color: rgba(white, 0.6);
+  }
+
+}

@@ -1,0 +1,205 @@
+$tablet-width: 568px;
+$primary-color: #214B2C;
+$secondary-color: #D55734;
+$muted-color: #6e6e6e;
+$light-grey: #e5e5e5;
+$light-green: #06B433;
+
+@import url('https://fonts.googleapis.com/css?family=Biryani:800');
+
+@mixin mobile {
+	@media (max-width: #{$tablet-width}) {
+		@content;
+	}
+}
+
+@mixin notmobile {
+	@media (min-width: #{$tablet-width}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin filter($filter-type,$filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+@mixin placeholder {
+  input::-webkit-input-placeholder {@content};
+  input:-moz-placeholder {@content};
+  input::-moz-placeholder {@content};
+  input:-ms-input-placeholder {@content};
+  *::-webkit-input-placeholder {@content};
+  *:-moz-placeholder {@content};
+  *::-moz-placeholder {@content};
+  *:-ms-input-placeholder {@content};
+}
+
+@mixin opacity($opacity) {
+	filter: alpha(opacity=$opacity*100);
+	opacity: $opacity;
+}
+
+@mixin animation($animateinfo){
+	-webkit-animation: $animateinfo;
+	-moz-animation: $animateinfo;
+    animation: $animateinfo;
+}
+
+@mixin animation-name($animate) {
+	-webkit-animation-name: $animate;
+	-moz-animation-name: $animate;
+	-o-animation-name: $animate;
+  animation-name: $animate;
+}
+
+@mixin animation-duration($time) {
+	-webkit-animation-duration: $time;
+	-moz-animation-duration: $time;
+	-o-animation-duration: $time;
+	animation-duration: $time;
+}
+
+@mixin animation-timing-function($timetype) {
+	-moz-animation-timing-function: $timetype;
+	-o-animation-timing-function: $timetype;
+	-webkit-animation-timing-function: $timetype;
+	animation-timing-function: $timetype;
+}
+
+@mixin animation-delay($ani-delay) {
+	-moz-animation-delay: $ani-delay;
+	-o-animation-delay: $ani-delay;
+	-webkit-animation-delay: $ani-delay;
+	animation-delay: $ani-delay;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+  transition: $transition;
+}
+
+
+@mixin transition-duration($trtime) {
+	-webkit-transition-duration: $trtime;
+	-moz-transition-duration: $trtime;
+	-o-transition-duration: $trtime;
+    transition-duration: $trtime;
+}
+
+@mixin transition-delay($delay) {
+	-webkit-transition-delay: $delay;
+	-moz-transition-delay: $delay;
+	-o-transition-delay: $delay;
+    transition-delay: $delay;
+}
+
+@mixin transform($trsf) {
+	-webkit-transform: $trsf;
+	-moz-transform: $trsf;
+	-ms-transform: $trsf;
+	transform: $trsf;
+}
+
+@mixin transform-style($trfstyle) {
+    -webkit-transform-style: $trfstyle;
+    -moz-transform-style: $trfstyle;
+    -ms-transform-style: $trfstyle;
+    transform-style: $trfstyle;
+}
+
+@mixin transform-origin($origin) {
+	-ms-transform-origin: $origin;
+    -webkit-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@function is-direction($value) {
+  $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+  @return $is-keyword or $is-angle;
+}
+
+@function legacy-direction($value) {
+  @if is-direction($value) == false {
+    @error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+  }
+
+  $conversion-map: (
+    to top          : bottom,
+    to top right    : bottom left,
+    to right top    : left bottom,
+    to right        : left,
+    to bottom right : top left,
+    to right bottom : left top,
+    to bottom       : top,
+    to bottom left  : top right,
+    to left bottom  : right top,
+    to left         : right,
+    to left top     : right bottom,
+    to top left     : bottom right
+  );
+
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+
+  @return 90deg - $value;
+}
