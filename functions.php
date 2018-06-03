@@ -16,7 +16,7 @@ function child_theme_setup() {
 // Add theme support
 add_theme_support( 'html5');
 add_theme_support( 'genesis-responsive-viewport' );
-add_theme_support( 'genesis-footer-widgets', 2 );
+add_theme_support( 'genesis-footer-widgets', 3 );
 add_theme_support( 'genesis-structural-wraps', array(
 	'site-inner',
 	'footer-widgets',

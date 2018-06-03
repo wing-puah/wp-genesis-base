@@ -1,55 +1,56 @@
 <?php
+$columns = get_sub_field('column');
 $add_classes = get_sub_field('extra_classes');
-$header = get_sub_field('container_header');
+$title = get_sub_field('container_header');
 $description = get_sub_field('container_description');
 $unique_class = get_sub_field('optional_item_class');
-$columns = get_sub_field('column');
-$image_size = 'medium';
+$bg_col = get_sub_field('bg_col');?>
 
-// Container field ?>
-<div class="center-xs p-3 px-sm-5 py-sm-6 <?php echo $row_class; ?> <?php echo $add_classes; ?>"> <?php
+<div class="center-xs px-3 py-5 px-sm-5 py-sm-6 <?php echo $add_classes; ?>" <?php
+if( $bg_col ):  ?>
+  style = "background: <?php echo $bg_col; ?>;" <?php
+endif; ?>
+id="<?php echo $idCount; ?>"
+> <?php
 
-  if( $header ): ?><h2><?php echo $header; ?></h2><?php
-  endif;
+  // Check for nested fields in columns field
+  if( $title ): ?>
+    <h2 class="text--white mb-0"> <?php echo $title; ?> </h2> <?php
+  endif;  // end $title check
 
-  if( $description ): ?><p class="mb-sm-6"><?php echo $description; ?></p><?php
-  endif;
+  if( $description ): ?>
+    <div class="mb-sm-2 text--white"> <?php echo $description; ?> </div> <?php
+  endif;  // end $description check
 
-  // Start columns loop
-  $col_length = count($columns);   // Check for total number of elements in ACF column field created dynamically
+  if( $columns ):
 
-  if ($col_length >= 6):  // more than 5 elements in row
-    foreach( array_chunk( $columns, 4, true ) as $col_item ):  ?>
-    <div class="row center-xs <?php if($unique_class): echo $unique_class; endif;?>"> <?php
+    foreach( array_chunk( $columns, 3, true ) as $col_item ):  ?>
+      <div class="row start-xs <?php if($unique_class): echo $unique_class; endif;?>"> <?php
 
-      foreach( $col_item as $item ):?>
-        <div class="column col-xs-12 col-sm-3 p-3"> <?php
-          if( $item['image'] ): ?>
-            <img src=" <?php echo $item['image']['sizes'][$image_size];?>" alt="<?php echo $item['image']['alt'];?>" /> <?php
-          endif; ?>
-          <h4><?php echo $item['title'];?></h4>
-          <p class="text--small text-align-xs--left "><?php echo $item['copy'];?></p>
-        </div>  <?php
-      endforeach; ?>
+        foreach( $col_item as $item ):
+          $icon= $item['fa_icon']; ?>
 
-    </div> <?php
+          <div class="column col-xs-12 col-sm-4 p-3 row"> <?php
+
+            if( $icon ): ?>
+              <div class="col-xs-12 col-sm-2 text--white" style="font-size:30px;"> <?php
+                echo $icon; ?>
+              </div>
+              <div class="col-xs-12 col-sm-10"><?php
+            endif; ?>
+
+            <h4 class="mb-0 text--white"><?php echo $item['title'];?></h4>
+            <div class="text--white"><?php echo $item['copy'];?></div> <?php
+            if( $icon ): ?>
+              </div> <?php
+            endif; ?>
+
+          </div> <?php
+        endforeach; ?>
+
+      </div> <?php
     endforeach;
 
-
-  else:  // equal or less than 5 elements in row ?>
-    <div class="row <?php if( $unique_class ): echo $unique_class; endif; ?>"><?php
-
-      foreach( $columns as $column ):?>
-        <div class="column col-xs-12 p-3 col-sm"> <?php
-          if( $column['image'] ): ?>
-            <img src=" <?php echo $column['image']['sizes'][$image_size];?>" alt="<?php echo $column['image']['alt'];?>" /> <?php
-          endif;?>
-          <h4><?php echo $column['title'];?></h4>
-          <p class="text--small text-align-xs--left "><?php echo $column['copy'];?></p>
-        </div> <?php
-      endforeach; ?>
-
-    </div> <?php
-  endif;  // end number of columns condition ?>
+  endif;  // end $columns check ?>
 
 </div>

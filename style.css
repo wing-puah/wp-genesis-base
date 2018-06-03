@@ -1,5 +1,9 @@
 /* # Genesis Framework
+<<<<<<< HEAD
 Theme Name: Genesis Child
+=======
+Theme Name: Trove
+>>>>>>> 6a4819b5ff92cf723247228f9c6e093752be758a
 Theme URI: http://my.studiopress.com/themes/genesis/
 Description: The industry standard for Premium WordPress Themes.
 Author: StudioPress
@@ -1290,8 +1294,12 @@ p.entry-meta {
 
 	.site-inner,
 	.wrap {
+<<<<<<< HEAD
 		padding-left: 5%;
 		padding-right: 5%;
+=======
+		padding-left:0;
+>>>>>>> 6a4819b5ff92cf723247228f9c6e093752be758a
 	}
 
 }
