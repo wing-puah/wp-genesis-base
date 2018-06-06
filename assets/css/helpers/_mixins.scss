@@ -1,32 +1,23 @@
-$tablet-width: 568px;
-$primary-color: #214B2C;
-$secondary-color: #D55734;
-$muted-color: #6e6e6e;
-$light-grey: #e5e5e5;
-$light-green: #06B433;
-
-@import url('https://fonts.googleapis.com/css?family=Biryani:800');
-
 @mixin mobile {
-	@media (max-width: #{$tablet-width}) {
+	@media (max-width: #{$width--tablet}) {
 		@content;
 	}
 }
 
 @mixin notmobile {
-	@media (min-width: #{$tablet-width}) {
+	@media (min-width: #{$width--tablet}) {
 		@content;
 	}
 }
 
 @mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+  @media (min-width: #{$width--tablet}) and (max-width: #{$width--large - 1px}) {
     @content;
   }
 }
 
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
+@mixin lrg-desktop {
+  @media (min-width: #{$width--large}) {
     @content;
   }
 }

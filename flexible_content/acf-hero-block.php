@@ -1,7 +1,9 @@
 <?php
 $hero = get_sub_field('hero'); ?>
 
-<div class="hero center-xs middle-xs py-4 px-2 p-sm-0 <?php echo $hero['extra_classes']; ?>" id="<?php echo $idCount; ?>">
+<div
+  class="hero center-xs middle-xs py-4 px-2 p-sm-0 <?php echo $hero['extra_classes']; ?>"
+  id="<?php echo $acfId; ?>" >
 
   <div class="hero__content row p-xs-2 px-sm-7 py-sm-4 center-xs middle-xs">
     <div class="hero-img col-xs-12 col-sm-5"><?php

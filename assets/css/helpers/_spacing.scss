@@ -1,3 +1,9 @@
+.container {
+  @include lrg-desktop {
+    max-width: 1300px;
+  }
+}
+
 // Vars and Maps
 $grid-breakpoints: (
   xs: 0,

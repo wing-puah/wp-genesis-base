@@ -20,9 +20,9 @@
   background-attachment: fixed;
 
   &:before {
-    background-image: linear-gradient(to bottom right, $secondary-color, #FFC682);
-    background-image: -moz-linear-gradient(to bottom right, $secondary-color, #FFC682);
-    background-image: -webkit-linear-gradient(to bottom right, $secondary-color, #FFC682);
+    background-image: linear-gradient(to bottom right, $color--secondary, #FFC682);
+    background-image: -moz-linear-gradient(to bottom right, $color--secondary, #FFC682);
+    background-image: -webkit-linear-gradient(to bottom right, $color--secondary, #FFC682);
     opacity: 0.3;
   }
 }

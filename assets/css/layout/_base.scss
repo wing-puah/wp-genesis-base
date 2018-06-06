@@ -4,7 +4,7 @@ html {
 
 body {
   overflow-x: hidden;
-  color: #222;
+  color: $color--body;
   font-size: 14px;
   font-size: 1.4rem;
 }
@@ -14,8 +14,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: $primary-color;
-  font-family: 'Biryani', sans-serif;
+  color: $color--heading;
 }
 
 h1 {
@@ -38,41 +37,7 @@ h4 {
   font-size: 18px;
 }
 
-.button {
-  background-color: $primary-color;
-  color: #fff4e8;
-  padding: 15px 30px;
-
-  &:hover {
-    background-color: #06B433;
-    color: $secondary-color;
-  }
-}
-
-.bg--grey { background-color: $light-grey; }
-.bg--primary { background-color: $primary-color; }
-
-.text--black { color: #222; }
-.text--white { color: white; }
-.text--muted { color: $muted-color; }
-
-.text--small {
-  font-size: 1.2rem;
-  font-size: 12px;
-}
-
-.text-align-xs--left {
-  @include mobile { text-align: left; }
-}
-
 .full-width {
   width: 100% !important;
   padding: 0 !important;
-}
-
-.column--circle-img img {
-  border-radius: 100%;
-  height: 150px;
-  width: 150px;
-  object-fit: cover;
 }

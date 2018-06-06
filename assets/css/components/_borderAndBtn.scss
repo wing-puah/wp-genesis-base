@@ -1,0 +1,26 @@
+.border {
+  border: 1px solid $border--primary;
+}
+
+.border--muted {
+  border-color: $color--muted;
+}
+
+.border--thick {
+  border-width: $border--thick;
+}
+
+.border--circle {
+  border-radius: 100%;
+}
+
+.button {
+  background-color: $cta__bg;
+  color: $cta__words;
+  padding: 15px 30px;
+
+  &:hover {
+    background-color: $cta__bg--hover;
+    color: $cta__words--hover;
+  }
+}

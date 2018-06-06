@@ -1,6 +1,8 @@
 <?php
 $side_blk = get_sub_field('img_with_info'); ?>
-<div class="img-with-content row m-sm-6" id="<?php echo $idCount; ?>">
+<div
+  class="img-with-content row m-sm-6"
+  id="<?php echo $acfId; ?>" >
 
   <div class="col-12 col-sm-7 px-3 py-5 p-sm-5">
     <h2><?php echo $side_blk['header'];?></h2>

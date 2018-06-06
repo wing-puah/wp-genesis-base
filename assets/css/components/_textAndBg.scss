@@ -1,0 +1,18 @@
+.pos--rel {position: relative;}
+.bg--white { background-color: white; }
+.bg--grey { background-color: $color--muted; }
+.bg--primary { background-color: $color--primary; }
+.bg--secondary { background-color: $color--secondary; }
+
+
+.text--black { color: #222; }
+.text--white { color: white; }
+.text--muted { color: $color--muted; }
+
+.text--small {
+  font-size: 1.6rem;
+  font-size: 16px;
+}
+.text--uppercase {
+  text-transform: uppercase;
+}

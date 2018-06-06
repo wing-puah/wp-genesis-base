@@ -15,7 +15,9 @@ if( $posts ):
     $class = ( $count%2 == 0 ? '' : 'm-0 first-sm');
     $count++; ?>
 
-    <div class="row <?php echo $row_class; ?>">
+    <div
+      class="row <?php echo $row_class; ?>"
+      id="<?php echo $acfId; ?>" >
 
       <div class="col-xs-12 col-sm-6 p-0">
         <?php echo get_the_post_thumbnail( $p->ID ); ?>
